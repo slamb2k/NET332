@@ -50,6 +50,9 @@
                             Foreground="White"
                             Text="{Binding Title}" />
                     </Grid>
+                    <!--<StackPanel Width="200" Height="150" Margin="10" Background="Red">
+                        <TextBlock Text="{Binding Title}" FontSize="24" TextWrapping="Wrap" Margin="10" Width="Auto" Foreground="White"/>
+                    </StackPanel>-->
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
