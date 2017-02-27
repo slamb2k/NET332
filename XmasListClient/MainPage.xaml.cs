@@ -20,12 +20,14 @@ namespace XmasListClient
         private readonly AuthenticationContext _authContext;
         private readonly Uri _redirectUri;
 
+        // The current user that is returned from a successful authenitcaqtion
         private UserInfo CurrentUser { get; set; }
 
         public MainPage()
         {
             InitializeComponent();
 
+            // Get the special callback url for this application
             _redirectUri = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
             _authContext = new AuthenticationContext(App.Authority);
         }
@@ -35,6 +37,9 @@ namespace XmasListClient
             await dialog.ShowAsync();
         }
 
+        /// <summary>
+        /// Get the xmas list from the web api and bind it to the grid
+        /// </summary>
         private async void GetXmasList()
         {
             var response =
@@ -59,6 +64,9 @@ namespace XmasListClient
             }
         }
 
+        /// <summary>
+        /// Add a new gift to the web api
+        /// </summary>
         private async void AddGift()
         {
             HttpContent content = new FormUrlEncodedContent(new[] { new KeyValuePair<string, string>("Title", GiftText.Text) });
@@ -79,7 +87,6 @@ namespace XmasListClient
             }
         }
 
-        // Post a new item to the Xmas list.
         private void Button_Click_Add_Gift(object sender, RoutedEventArgs e)
         {
             AddGift();
@@ -93,11 +100,11 @@ namespace XmasListClient
                 SignIn();
         }
 
+        /// <summary>
+        /// Sign in using ADAL
+        /// </summary>
         private async void SignIn()
         {
-            //
-            // Use ADAL to get an access token to call the To Do list service.
-            //
             AuthenticationResult result;
             try
             {
@@ -129,6 +136,9 @@ namespace XmasListClient
             SignInButton.Content = "Sign Out...";
         }
 
+        /// <summary>
+        /// Sign out by clearing the token cache
+        /// </summary>
         private void SignOut()
         {
             // Clear session state from the token cache.
