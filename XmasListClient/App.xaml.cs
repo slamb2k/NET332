@@ -29,8 +29,8 @@ namespace XmasListClient
         // The AAD Instance is the instance of Azure, for example public Azure or Azure China.
         // The Authority is the sign-in URL of the tenant.
         //
-        public const string Tenant = "msftigniteau2017.onmicrosoft.com";
-        public const string ClientId = "e144c767-5b0a-4a0b-b948-97d93ed63eed";
+        public const string Tenant = "<TENANT NAME>.onmicrosoft.com";
+        public const string ClientId = "<CLIENT ID>";
         public const string AadInstance = "https://login.microsoftonline.com/{0}";
         public static string Authority = string.Format(CultureInfo.InvariantCulture, AadInstance, Tenant);
 
